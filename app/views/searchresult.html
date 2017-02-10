@@ -1,0 +1,37 @@
+<!-- Header -->
+<div ng-include src="'views/common/header.html'"></div>
+
+<div class="container">
+  <!-- Texto de carregamento dos dados -->
+  <div ng-include src="'views/common/loadingcontent.html'"></div>
+
+  <div ng-hide="loadingData">
+    <!-- Total de livros encontrados -->
+    <p class="search-info text-center" ng-if="totalItems > 0"><b>{{totalItems}}</b> livros encontrados até o momento</p>
+    <h2 class="search-info text-center" ng-if="totalItems == 0">Nenhum livro encontrado</h2>
+
+    <!-- Lista de livros -->
+    <div id="books-list">
+      <ul>
+        <li ng-repeat="book in booksList" ng-click="visualizeBook(book.id)">
+          <div ng-include src="'views/common/bookitem.html'"></div>
+          <hr>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Paginacao -->
+    <div class="text-center" ng-if="totalItems > 0">
+      <ul uib-pagination
+        total-items="totalItems"
+        items-per-page="itemsPerPage"
+        ng-model="currentPage"
+        ng-change="pageChanged()"
+        max-size="maxSize"
+        class="pagination-sm book-pagination"
+        boundary-links="true"
+        force-ellipses="true"
+        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+    </div>
+  </div>
+</div>

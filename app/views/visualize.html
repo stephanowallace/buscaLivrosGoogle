@@ -1,0 +1,97 @@
+<!-- Header -->
+<div ng-include src="'views/common/header.html'"></div>
+
+<!-- Texto de carregamento dos dados -->
+<div ng-include src="'views/common/loadingcontent.html'"></div>
+
+<div class="container" ng-hide="loadingData">
+  <!-- Breadcrumb -->
+  <ol class="breadcrumb" ng-controller="MainCtrl">
+    <li><a href="/">Início</a></li>
+    <li><a href="" ng-click="searchForBooks()">Busca</a></li>
+    <li class="active">{{bookData.volumeInfo.title}}</li>
+  </ol>
+
+  <div class="row">
+    <div class="text-center">
+
+      <!-- Titulo e subtitulo do livro -->
+      <h1 class="book-title text-uppercase">
+        <span ng-bind-html="bookData.volumeInfo.title"></span>
+        <div ng-if="book.volumeInfo.subtitle != null">
+          <small ng-bind-html="bookData.volumeInfo.subtitle"></small>
+        </div>
+      </h1>
+      <!-- Tags do livro -->
+      <div class="row">
+        <span class="badge" ng-repeat="category in bookData.volumeInfo.categories">{{category}}</span>
+      </div>
+    </div>
+    <br>
+
+    <!-- Imagem de capa do livro -->
+    <div class="col-md-4 col-md-offset-0 col-xs-6 col-xs-offset-3">
+      <img check-image class="img-responsive"
+        ng-src="{{bookData.volumeInfo.imageLinks.extraLarge || bookData.volumeInfo.imageLinks.large || bookData.volumeInfo.imageLinks.medium || bookData.volumeInfo.imageLinks.extraLarge.small}}"/>
+    </div>
+
+    <div class="clearfix visible-xs-block"></div>
+
+    <div class="col-md-8">
+      <div class="clearfix visible-xs-block"></div>
+      <!-- Informacoes sobre o livro -->
+      <div class="book-info">
+        <div class="row">
+          <label class="col-md-4 col-sm-5 col-xs-6">Título:</label>
+          <span class="col-md-8 col-sm-7 col-xs-6">{{bookData.volumeInfo.title}} {{bookData.volumeInfo.subtitle}}</span>
+        </div>
+        <div class="row">
+          <label class="col-md-4 col-sm-5 col-xs-6">Autor(es):</label>
+          <span class="col-md-8 col-sm-7 col-xs-6" ng-repeat="author in bookData.volumeInfo.authors">{{author}}{{$last ? '' : ', '}}</span>
+        </div>
+        <div class="row">
+          <label class="col-md-4 col-sm-5 col-xs-6">Editora:</label>
+          <span class="col-md-8 col-sm-7 col-xs-6">{{bookData.volumeInfo.publisher}}</span>
+        </div>
+        <div class="row">
+          <label class="col-md-4 col-sm-5 col-xs-6">Num. páginas:</label>
+          <span class="col-md-8 col-sm-7 col-xs-6">{{bookData.volumeInfo.pageCount}}</span>
+        </div>
+        <div class="row">
+          <label class="col-md-4 col-sm-5 col-xs-6">Data publicação:</label>
+          <span class="col-md-8 col-sm-7 col-xs-6">{{bookData.volumeInfo.publishedDate | date:"dd/MM/yyyy"}}</span>
+        </div>
+        <div class="row" ng-repeat="indIdentifier in bookData.volumeInfo.industryIdentifiers">
+          <label class="col-md-4 col-sm-5 col-xs-6">{{indIdentifier.type}}:</label>
+          <span class="col-md-8 col-sm-7 col-xs-6">{{indIdentifier.identifier}}</span>
+        </div>
+        <div class="row">
+          <label class="col-md-4 col-sm-5 col-xs-6">Idioma:</label>
+          <span class="col-md-8 col-sm-7 col-xs-6">{{bookData.volumeInfo.language}}</span>
+        </div>
+      </div>
+
+      <!-- Botoes de acao -->
+      <div class="row">
+        <div class="col-md-12">
+          <a class="btn btn-book" href="{{bookData.accessInfo.webReaderLink}}" target="_blank">
+            amostra gratuita
+          </a>
+          <a class="btn btn-book" href="{{bookData.saleInfo.buyLink}}" target="_blank"
+            ng-if="bookData.saleInfo && bookData.saleInfo.saleability === 'FOR_SALE'">
+            comprar: {{bookData.saleInfo.retailPrice.amount | currency:bookData.saleInfo.retailPrice.currencyCode:2}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resumo completo do livro -->
+  <div class="page-header">
+    <h2 class="text-uppercase">Resumo</h2>
+  </div>
+  <blockquote ng-if="bookData.volumeInfo.description">
+    <p ng-bind-html="bookData.volumeInfo.description"></p>
+  </blockquote>
+  <p ng-if="!bookData.volumeInfo.description"> OPS! Parece que esse livro não possui um resumo.</p>
+</div>

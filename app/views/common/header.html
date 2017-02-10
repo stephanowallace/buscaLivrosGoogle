@@ -1,0 +1,30 @@
+<div class="header" ng-controller="MainCtrl">
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand text-uppercase" href="#/">Busca Livros</a>
+      </div>
+
+      <div class="collapse navbar-collapse text-center" id="js-navbar-collapse">
+        <form class="navbar-form">
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control" id="search-input" placeholder="Palavra-chave" ng-model="searchParam.q" ng-model-options="{ getterSetter: true }">
+            <span ng-if="searchParam.q()" ng-model-options="{ getterSetter: true }"
+                ng-click="clearText()"
+                class="glyphicon glyphicon-remove form-control-feedback"
+                style="cursor: pointer; pointer-events: all;"></span>
+          </div>
+          <button class="btn btn-book" ng-click="searchForBooks()" ng-disabled="!searchParam.q()">
+            Buscar
+          </button>
+        </form>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="main-page">
+  <div class="container">
+    <h1 class="text-center text-uppercase">Busca livros</h1>
+    <form>
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" id="search-input" placeholder="Palavra-chave" ng-model="searchParam.q" ng-model-options="{ getterSetter: true }">
+        <span ng-if="searchParam.q()" ng-model-options="{ getterSetter: true }"
+            ng-click="clearText()"
+            class="glyphicon glyphicon-remove form-control-feedback"
+            style="cursor: pointer; pointer-events: all;"></span>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-lg btn-book" ng-click="searchForBooks()" ng-disabled="!searchParam.q()">Buscar</button>
+      </div>
+    </form>
+  </div>
+</div>

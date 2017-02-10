@@ -1,0 +1,206 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+@import url('https://fonts.googleapis.com/css?family=Abel|Open+Sans+Condensed|Josefin+Sans');
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+// Variaveis
+$button-color: #546E7A;
+$button-favorite-color: #EF5350;
+$button-favorite-hover-color: #C62828;
+$info-color: #90A4AE;
+$highlight-color: #ECEFF1;
+
+body {
+  padding: 50px 0 0 0;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3 {
+  font-family: 'Abel', serif;
+}
+
+// Tema botao principal
+.btn-book {
+  background-color: $button-color;
+  color: #FFF;
+
+  &:hover {
+    color: #FFF;
+  }
+}
+
+// Botao de favorito
+.btn-favorite, .btn-not-favorite {
+  border-radius: 20px;
+}
+
+.btn-favorite {
+  background-color: $button-favorite-color;
+  color: #FFF;
+
+  &:hover {
+    background-color: $button-favorite-hover-color;
+    color: #FFF;
+  }
+}
+
+.btn-not-favorite {
+  background-color: #FFF;
+  color: $button-favorite-color;
+
+  &:hover {
+    color: $button-favorite-hover-color;
+  }
+}
+
+// Header
+.header {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  .navbar {
+    border-bottom: 0;
+
+    .navbar-brand {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 22px;
+    }
+  }
+}
+
+// Quantos livros foram encontrados
+.search-info {
+  color: #90A4AE;
+  margin-bottom: 30px;
+}
+
+// Pagina inicial
+.main-page {
+  margin-top: 10%;
+
+  h1 {
+    margin-bottom: 50px;
+    font-weight: 200;
+    font-size: 50px;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+}
+
+.breadcrumb {
+  margin-top: 20px;
+}
+
+.book-info {
+  margin: 20px 0;
+}
+
+// Lista de livros encontrados
+#books-list {
+  ul {
+    list-style: none;
+
+    li {
+      cursor: pointer;
+      margin-bottom: 10px;
+
+      .book-title {
+        font-size: 22px;
+        margin: 0;
+      }
+
+      .book-info {
+        margin: 10px 0;
+      }
+
+      .highlighted {
+        background-color: $highlight-color;
+      }
+    }
+  }
+}
+
+// Tags de livros
+.badge {
+  background-color: white;
+  color: $info-color;
+  border: 1px solid;
+  font-weight: 300;
+  margin: 5px;
+}
+
+// Resumo do livro
+blockquote p {
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 300;
+
+  &.resume {
+    overflow: hidden;
+    position: relative;
+    line-height: 1.2em;
+    max-height: 3.6em;
+    text-align: justify;
+    margin-right: -1em;
+    padding-right: 1em;
+
+    &:before {
+      content: '...';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      width: 1em;
+      height: 1em;
+      margin-top: 0.2em;
+      background: white;
+    }
+  }
+}
+
+// Paginacao
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
+.pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: $button-color;
+  border-color: $button-color;
+}
+
+.pagination > li > a, .pagination > li > a:hover, .pagination > li > a:focus,
+.pagination > li > span, .pagination > li > span:hover, .pagination > li > span:focus {
+  color: $button-color;
+}
+
+// Topicos da pagina de visualizacao
+.page-header {
+  padding: 0;
+}
+
+// Responsividade
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  .header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .book-info {
+    margin: 0;
+  }
+
+  .breadcrumb {
+    margin-top: 0px;
+  }
+}
