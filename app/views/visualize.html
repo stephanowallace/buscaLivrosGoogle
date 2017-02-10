@@ -73,14 +73,17 @@
 
       <!-- Botoes de acao -->
       <div class="row">
-        <div class="col-md-12">
-          <a class="btn btn-book" href="{{bookData.accessInfo.webReaderLink}}" target="_blank">
-            amostra gratuita
-          </a>
-          <a class="btn btn-book" href="{{bookData.saleInfo.buyLink}}" target="_blank"
-            ng-if="bookData.saleInfo && bookData.saleInfo.saleability === 'FOR_SALE'">
-            comprar: {{bookData.saleInfo.retailPrice.amount | currency:bookData.saleInfo.retailPrice.currencyCode:2}}
-          </a>
+        <div class="col-xs-12">
+          <div class="visualize-action-buttons">
+            <a class="btn btn-book" href="{{bookData.saleInfo.buyLink}}" target="_blank"
+              ng-if="bookData.saleInfo && bookData.saleInfo.saleability === 'FOR_SALE'">
+              comprar: {{bookData.saleInfo.retailPrice.amount | currency:bookData.saleInfo.retailPrice.currencyCode:2}}
+            </a>
+            <br>
+            <a class="btn btn-link" href="{{bookData.accessInfo.webReaderLink}}" target="_blank">
+              amostra gratuita
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -24,6 +24,9 @@
           <button class="btn btn-book" ng-click="searchForBooks()" ng-disabled="!searchParam.q()">
             Buscar
           </button>
+          <button class="btn btn-link pull-right" ng-controller="SearchResultCtrl">
+            <span class="glyphicon glyphicon-heart-empty"></span> {{favoriteList.length}} favoritos
+          </button>
         </form>
       </div>
   </div>

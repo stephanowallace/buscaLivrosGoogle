@@ -41,7 +41,6 @@ angular.module('projetosApp')
     $scope.pageChanged = function() {
       $scope.parameters.startIndex = ($scope.currentPage - 1) * $scope.itemsPerPage;
       $scope.searchForBooks();
-      console.log('Page changed to: ' + $scope.currentPage);
     };
 
     // redireciona para pagina de visualizacao de dados do livro adicionando id do
