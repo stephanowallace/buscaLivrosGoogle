@@ -3,7 +3,7 @@
 /**
  * @ngdoc function
  * @name projetosApp.controller:SearchresultctrlCtrl
- * @description
+ * @description Controller que contem o resultado das buscas por livros
  * # SearchresultctrlCtrl
  * Controller of the projetosApp
  */

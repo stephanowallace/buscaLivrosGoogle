@@ -3,7 +3,7 @@
 /**
  * @ngdoc function
  * @name projetosApp.controller:VisualizeCtrl
- * @description
+ * @description Controller para visualizacao do livro selecionado pelo usuario
  * # VisualizeCtrl
  * Controller of the projetosApp
  */

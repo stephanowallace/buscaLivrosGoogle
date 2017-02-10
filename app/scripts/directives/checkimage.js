@@ -3,7 +3,7 @@
 /**
  * @ngdoc directive
  * @name projetosApp.directive:checkImage
- * @description
+ * @description diretiva que altera imagem de livro caso ela nao seja encontrada
  * # checkImage
  */
 angular.module('projetosApp')

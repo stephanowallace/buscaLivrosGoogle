@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name projetosApp.BookService
- * @description
+ * @description Servico que busca na API do google por livros, dados os parametros necessarios
  * # BookService
  * Service in the projetosApp.
  */

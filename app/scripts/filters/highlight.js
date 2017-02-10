@@ -3,7 +3,7 @@
 /**
  * @ngdoc filter
  * @name projetosApp.filter:highlight
- * @function
+ * @function filtro que destaca texto pesquisado por usuario
  * @description
  * # highlight
  * Filter in the projetosApp.

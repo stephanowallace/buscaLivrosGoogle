@@ -3,7 +3,7 @@
 /**
  * @ngdoc overview
  * @name projetosApp
- * @description
+ * @description Aplicacao, com suas rotas configuradas
  * # projetosApp
  *
  * Main module of the application.

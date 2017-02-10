@@ -3,7 +3,7 @@
 /**
  * @ngdoc function
  * @name projetosApp.controller:MainCtrl
- * @description
+ * @description Controller principal que realiza as buscas e redireciona para a pagina correspondente
  * # MainCtrl
  * Controller of the projetosApp
  */
