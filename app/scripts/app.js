@@ -25,6 +25,11 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/favorites', {
+        templateUrl: 'views/favoritelist.html',
+        controller: 'FavoriteListCtrl',
+        controllerAs: 'favoritelist'
+      })
       .when('/result', {
         templateUrl: 'views/searchresult.html',
         controller: 'SearchResultCtrl',
@@ -43,4 +48,11 @@ angular
       .otherwise({
         redirectTo: '/notexists'
       });
+  })
+  .run(function($rootScope) {
+    // dispara evento quando rota e alterada
+    $rootScope.$on('$routeChangeStart', function () {
+        // envia sinal broadcast informando que os dados precisam ser recuperados do LocalStorage
+        $rootScope.$broadcast('restorestate');
+    });
   });

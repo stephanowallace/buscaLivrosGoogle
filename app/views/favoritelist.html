@@ -1,0 +1,37 @@
+<!-- Header -->
+<div ng-include src="'views/common/header.html'"></div>
+
+<div class="container">
+  <h1> Lista de favoritos </h1>
+
+  <!-- Texto de carregamento dos dados -->
+  <div ng-include src="'views/common/loadingcontent.html'"></div>
+
+  <p ng-hide="booksList.length > 0 || loadingData">Você não possui livros em sua lista de favoritos</p>
+
+  <!-- Tabela com livros favoritos -->
+  <table class="table" ng-show="booksList.length > 0 && !loadingData">
+    <thead>
+      <tr>
+        <th class="col-xs-1">#</th>
+        <th class="col-xs-10">Título</th>
+        <th class="col-xs-1">Remover</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="book in booksList">
+        <th>
+          {{$index + 1}}
+        </th>
+        <td>
+          <a ng-click="visualizeBook(book.id)" href="">{{book.volumeInfo.title}}
+        </td>
+        <td class="text-center">
+          <a ng-click="removeFromFavorite(book.id, $index)" href="">
+            <span class="glyphicon glyphicon-remove"></span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

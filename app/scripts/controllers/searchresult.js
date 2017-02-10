@@ -8,7 +8,7 @@
  * Controller of the projetosApp
  */
 angular.module('projetosApp')
-  .controller('SearchResultCtrl', function ($scope, $location, BookService) {
+  .controller('SearchResultCtrl', function ($scope, $location, BookService, LocalStorageService) {
     $scope.parameters = $location.search();
     $scope.parameters.startIndex = 0;
     $scope.booksList = [];
@@ -21,7 +21,7 @@ angular.module('projetosApp')
     $scope.itemsPerPage = 10;
 
     // lista de livros favoritos
-    $scope.favoriteList = localStorage.getItem('bookList') ? JSON.parse(localStorage.getItem('bookList')) : [];
+    $scope.favoriteList = LocalStorageService.books;
 
     // busca por livros chamando servico da Google
     $scope.searchForBooks = function() {
@@ -62,15 +62,16 @@ angular.module('projetosApp')
 
     // marca um livro como favorito
     $scope.markAsFavorite = function(bookID){
-      $scope.favoriteList.push(bookID);
-      localStorage.setItem('bookList', JSON.stringify($scope.favoriteList));
+      LocalStorageService.saveBook(bookID);
     };
 
     // remove livro da lista de favoritos
     $scope.removeFromFavorite = function(bookID) {
-      var index = $scope.favoriteList.indexOf(bookID);
-      $scope.favoriteList.splice(index, 1);
-      localStorage.setItem('bookList', JSON.stringify($scope.favoriteList));
+      LocalStorageService.removeBook(bookID);
+    };
+
+    $scope.getFavoriteBooksData = function() {
+      $location.path('/favorites');
     };
 
     // chama servico de busca de livros
