@@ -1,9 +1,24 @@
 <div class="row" ng-mouseenter="hoverIn()" ng-mouseleave="hoverOut()">
-  <div class="col-md-3 col-sm-4 col-xs-5">
+  <div class="col-md-3 col-md-offset-0 col-xs-4 col-xs-offset-4">
     <!-- Thumbnail do livro -->
     <img class="img-responsive" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}" check-image/><br>
   </div>
-  <div class="col-md-9 col-sm-8 col-xs-7">
+
+  <!-- Botao de favorito para telas pequenas -->
+  <div class="col-xs-4 visible-xs-block">
+    <div ng-if="favoriteList.indexOf(book.id) != -1">
+      <button class="btn btn-favorite pull-right" ng-click="removeFromFavorite(book.id); $event.stopPropagation();">
+        <span class="glyphicon glyphicon-heart"></span>
+      </button>
+    </div>
+    <div ng-if="favoriteList.indexOf(book.id) == -1">
+      <button class="btn btn-not-favorite pull-right" ng-click="markAsFavorite(book.id); $event.stopPropagation();">
+        <span class="glyphicon glyphicon-heart-empty"></span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="col-md-9 col-xs-12">
     <!-- Titulo e subtitulo do livro -->
     <h2 class="book-title text-uppercase">
       <span ng-bind-html="book.volumeInfo.title | highlight:parameters.q"></span>
@@ -31,7 +46,7 @@
     </div>
 
     <!-- Resumo do livro -->
-    <blockquote class="hidden-xs" ng-if="book.volumeInfo.description">
+    <blockquote ng-if="book.volumeInfo.description">
       <p class="resume" ng-bind-html="book.volumeInfo.description"></p>
     </blockquote>
 
@@ -40,7 +55,7 @@
       <div class="col-md-6">
         <span class="badge" ng-repeat="category in book.volumeInfo.categories">{{category}}</span>
       </div>
-      <div class="col-md-6" >
+      <div class="col-md-6 hidden-xs">
         <div ng-if="favoriteList.indexOf(book.id) != -1">
           <button class="btn btn-favorite pull-right" ng-click="removeFromFavorite(book.id); $event.stopPropagation();">
             <span class="glyphicon glyphicon-heart"></span> favorito
@@ -54,11 +69,5 @@
       </div>
 
     </div>
-  </div>
-  <div class="col-xs-12 visible-xs-block">
-    <!-- Resumo do livro -->
-    <blockquote ng-if="book.volumeInfo.description">
-      <p class="resume" ng-bind-html="book.volumeInfo.description"></p>
-    </blockquote>
   </div>
 </div>
