@@ -10,6 +10,7 @@
 angular.module('projetosApp')
   .controller('VisualizeCtrl', function ($scope, $location, BookService) {
     $scope.bookData = {};
+    $scope.errorOcurred = false;
 
     // Recupera dados do livro
     $scope.retrieveBookData = function() {
@@ -21,10 +22,10 @@ angular.module('projetosApp')
           console.log(response.data);
         }, function errorCallback() {
           $scope.loadingData = false;
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
+          $scope.errorOcurred = true;
         });
     };
 
+    // chama servico
     $scope.retrieveBookData();
   });

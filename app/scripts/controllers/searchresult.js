@@ -12,6 +12,7 @@ angular.module('projetosApp')
     $scope.parameters = $location.search();
     $scope.parameters.startIndex = 0;
     $scope.booksList = [];
+    $scope.errorOcurred = false;
 
     // dados paginacao
     $scope.totalItems = 0;
@@ -30,11 +31,9 @@ angular.module('projetosApp')
           $scope.loadingData = false;
           $scope.booksList = response.data.items;
           $scope.totalItems = response.data.totalItems;
-        }, function errorCallback(response) {
+        }, function errorCallback() {
           $scope.loadingData = false;
-          console.log(response);
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
+          $scope.errorOcurred = true;
         });
     };
 

@@ -5,7 +5,7 @@
   <!-- Texto de carregamento dos dados -->
   <div ng-include src="'views/common/loadingcontent.html'"></div>
 
-  <div ng-hide="loadingData">
+  <div ng-hide="loadingData || errorOcurred">
     <!-- Total de livros encontrados -->
     <p class="search-info text-center" ng-if="totalItems > 0"><b>{{totalItems}}</b> livros encontrados até o momento</p>
     <h2 class="search-info text-center" ng-if="totalItems == 0">Nenhum livro encontrado</h2>

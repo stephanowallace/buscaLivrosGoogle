@@ -4,7 +4,7 @@
 <!-- Texto de carregamento dos dados -->
 <div ng-include src="'views/common/loadingcontent.html'"></div>
 
-<div class="container" ng-hide="loadingData">
+<div class="container" ng-hide="loadingData || errorOcurred">
   <!-- Breadcrumb -->
   <ol class="breadcrumb" ng-controller="MainCtrl">
     <li><a href="/">Início</a></li>
