@@ -13,7 +13,7 @@ angular.module('projetosApp')
       link: function(scope, element, attrs) {
         attrs.$observe('ngSrc', function(ngSrc) {
           if (!ngSrc) {
-            element.attr('src', '/images/noimage.jpg');
+            element.attr('src', 'images/noimage.jpg');
           }
         });
       }
