@@ -35,7 +35,12 @@ angular
         controller: 'VisualizeCtrl',
         controllerAs: 'visualize'
       })
+      .when('/notexists', {
+        templateUrl: '404.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/notexists'
       });
   });
