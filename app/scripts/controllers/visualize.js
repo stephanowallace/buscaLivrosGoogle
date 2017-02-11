@@ -19,7 +19,6 @@ angular.module('projetosApp')
         .then(function successCallback(response) {
           $scope.loadingData = false;
           $scope.bookData = response.data;
-          console.log(response.data);
         }, function errorCallback() {
           $scope.loadingData = false;
           $scope.errorOcurred = true;
