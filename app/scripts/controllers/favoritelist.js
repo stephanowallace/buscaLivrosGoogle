@@ -9,7 +9,7 @@
  */
 angular.module('projetosApp')
   .controller('FavoriteListCtrl', function ($scope, $location, BookService, LocalStorageService) {
-    $scope.parameters = {};
+    $scope.parameters = $location.search();
     $scope.booksList = [];
     $scope.errorOcurred = false;
 
